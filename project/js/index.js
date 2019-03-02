@@ -28,7 +28,7 @@ function submitMsg(){
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
 	let module = document.createElement("div");
-	workspace.innerHTML = "Selected content: " + content;
+	workspace.innerHTML = "<b>Selected Content</b><hr>" + content;
 }
 
 function renderMessage(message){
