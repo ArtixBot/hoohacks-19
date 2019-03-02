@@ -19,24 +19,33 @@ function submitMsg(){
 	if (entry.value == ""){
 		return false;
 	}
-	else{	// Submit to Firebase.
+	else{		// Submit to Firebase.
 		renderMessage(entry.value);
 	}
 	entry.value = "";
+}
+
+function displayInWorkspace(content){
+	let workspace = document.getElementById("workspace-content");
+	let module = document.createElement("div");
+	workspace.innerHTML = "Selected content: " + content;
 }
 
 function renderMessage(message){
 	let chatPanel = document.getElementById("chatPanel");
 	let module = document.createElement("div");
 	module.setAttribute("class", "chatMessage");
-
 	module.innerHTML = message;
+
+	module.addEventListener("click", function(){displayInWorkspace(module.innerHTML)});
 
 	chatPanel.appendChild(module);
 	chatPanel.scrollTop = chatPanel.scrollHeight;
 }
 
 // TODO: Implement. Pull NEW messages from Firebase, then render using renderMessage();
+// When a message is rendered into the chat pane and we click on it, run displayInWorkspace();
+// Call this method every second, or when submitMsg() runs.
 function retrieveMessages(){
 }
 
