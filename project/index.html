@@ -65,11 +65,16 @@
                             <i class="fas fa-cog float-right"></i>
                         </div>
                         <hr>
-                        <p>Enter an e-mail address to see if it's been breached. Results based on haveibeenpwned.com; may be inaccurate or out-of-date.</p>
+                        <div id="chatpanel" class="jumbotron jumbotron-fluid">
 
-                        <!-- <input type="email" id="securityCheck" name="name" placeholder="E-mail">
-                            <button type="submit" class="btn btn-primary" onclick=securityCheck()>Check!</button>
-                            <p id="securityCheckResult"></p>!-->	<!--Results from securityCheck() appended here.-->
+                        </div>
+                        <div id="submitpanel">
+                            <form class="form-horizontal">
+                                <div class="input-group">
+                                    <input id="chatMessage" type="text" class="form-control col-lg-24" placeholder="Enter your message..." autocomplete="off" onkeydown="submitMsg(event.which, event.keycode);">
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="col-md-4">

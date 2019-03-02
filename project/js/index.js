@@ -11,6 +11,14 @@ function securityCheck(){
 	requestJSON("https://haveibeenpwned.com/api/v2/breachedaccount/" + entry).then((response) => console.log(response));
 }
 
+function submitMsg(which, keycode){
+	if (keycode == 13 || which == 13){
+		let entry = document.getElementById("chatMessage");
+		console.log(entry.value);
+		entry.value = "";
+	}
+}
+
 function getHeadlines(){
 	let result = document.getElementById("newsResult");
 	if (result.children[0]){		// Remove old information when refreshing.

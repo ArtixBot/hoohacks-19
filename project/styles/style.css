@@ -59,7 +59,7 @@ i.bold{
 	font-weight: bold;
 }
 
-div.col-md-4, div.col-md-8{
+div.col-md-4{
 	opacity: 0.5;
 	-webkit-transition: opacity 0.20s;
 	-moz-transition:    opacity 0.20s;
@@ -68,7 +68,7 @@ div.col-md-4, div.col-md-8{
 	transition:         opacity 0.20s;
 }
 
-div.col-md-4:hover, div.col-md-8:hover{
+div.col-md-4:hover{
 	opacity: 1;
 }
 
@@ -132,4 +132,14 @@ b.widget-header{
 
 div.row {
 	padding-top: 35px;
+}
+
+#chatpane{
+	background-color: white;
+	background-clip: border-box;
+}
+
+#submitpanel{
+	position: absolute;
+	bottom: 0;
 }
