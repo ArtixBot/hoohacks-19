@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="utf-8">
@@ -26,18 +26,33 @@
             <form method="POST" action="index.html">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" name="username" placeholder="Username" required autofocus>
+                    <input type="email" id="email_field" name="username" placeholder="Email" required autofocus>
                 </div>
                 <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password_field" name="password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>	<!--Doesn't actually do login stuff for now.-->
+                <button onclick="login()" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
         <footer class="footer">
             <div class="container"> Copyright &#169; 2019 </div>
         </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyD9v0CMw_jtc8jAUqABYXTg2uTYA7WZA9g",
+                authDomain: "test-a8b36.firebaseapp.com",
+                databaseURL: "https://test-a8b36.firebaseio.com",
+                projectId: "test-a8b36",
+                storageBucket: "",
+                messagingSenderId: "297453806068"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src ="login.js"></script>
     </body>
 </html>
