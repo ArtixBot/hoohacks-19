@@ -59,7 +59,7 @@ i.bold{
 	font-weight: bold;
 }
 
-div.col-md-4{
+div.col-md-4, div.col-md-8{
 	opacity: 0.5;
 	-webkit-transition: opacity 0.20s;
 	-moz-transition:    opacity 0.20s;
@@ -68,7 +68,7 @@ div.col-md-4{
 	transition:         opacity 0.20s;
 }
 
-div.col-md-4:hover{
+div.col-md-4:hover, div.col-md-8:hover{
 	opacity: 1;
 }
 
