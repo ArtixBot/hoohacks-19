@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/animate.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/bootstrap.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" defer></script>
+	<script src="js/all.js" defer></script>
+	<script src="js/login.js" defer></script>
+
+	<title>Onehome Login</title>
+</head>
+<body class="background animated fadeIn faster">
+	<div class="jumbotron bg-transparent text-align-center">
+		<i class="fas fa-desktop fa-10x"></i>
+		<h1 class="display-4">Onehome</h1>
+		<p class="lead">The one-screen, ultra-lightweight homepage for all your browsing needs.</p>
+
+		<form method="POST" action="index.html">
+			<div class="form-group">
+				<i class="fas fa-user"></i>
+				<input type="text" id="username" name="username" placeholder="Username" required autofocus>
+			</div>
+			<div class="form-group">
+				<i class="fas fa-lock"></i>
+				<input type="password" id="password" name="password" placeholder="Password" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>	<!--Doesn't actually do login stuff for now.-->
+		</form>
+	</div>
+	
+	<footer class="footer">
+		<div class="container"> Copyright &#169; 2019 </div>
+	</footer>
+</body>
+</html>

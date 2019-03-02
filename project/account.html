@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/animate.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/bootstrap.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" defer></script>
+	<script src="js/all.js" defer></script>
+	<script src="js/account.js" defer></script>
+	<title>Onehome Account</title>
+</head>
+<body class="background animated fadeIn faster">
+	<header>
+		<nav class="navbar navbar-expand-md bg-transparent navbar-light">
+			<h1 class="navbar-brand">Account Settings</h1>
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">
+							<i class="fas fa-arrow-circle-left"></i>Back
+						</a>
+					</li>            
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<span class="form-check form-check-inline">
+			<h3>Enable Dark Theme</h3>
+			<div class="custom-switch">
+				<input type="checkbox" class="custom-control-input switch-large" id="darkThemeActive" onclick="darkTheme()">
+				<label class="custom-control-label" for="darkThemeActive"></label>
+			</div>
+		</span>
+		<p>While enabled, your screen will be rendered to have a dark background and light font.</p>
+	</div>
+</body>
+</html>
