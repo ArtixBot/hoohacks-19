@@ -55,4 +55,14 @@ function main(){
 	setInterval(retrieveMessages, 1000);
 }
 
+function logout(){
+    firebase.auth().signOut().then(function() {
+        window.alert("Good job");
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+  window.alert("Signing out error!");
+});
+}
+
 main();

@@ -31,7 +31,7 @@ function register(){
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  // ...
+  window.alert("Registering error!");
 });
 
 }
