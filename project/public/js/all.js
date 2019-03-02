@@ -26,11 +26,11 @@ determineBackground();
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyD9v0CMw_jtc8jAUqABYXTg2uTYA7WZA9g",
-    authDomain: "test-a8b36.firebaseapp.com",
-    databaseURL: "https://test-a8b36.firebaseio.com",
-    projectId: "test-a8b36",
-    storageBucket: "",
-    messagingSenderId: "297453806068"
+  apiKey: "AIzaSyBSRI2Het_yA6yHWEXcpnQBlE_kAvTqhs8",
+  authDomain: "hivemind-233318.firebaseapp.com",
+  databaseURL: "https://hivemind-233318.firebaseio.com",
+  projectId: "hivemind-233318",
+  storageBucket: "hivemind-233318.appspot.com",
+  messagingSenderId: "183194599761"
 };
 firebase.initializeApp(config);
