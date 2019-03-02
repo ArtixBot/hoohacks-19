@@ -83,13 +83,20 @@ function main(){
 	setInterval(getTimeDate, 1000);			// Every second update time.
 	setInterval(retrieveMessages, 1000);
 }
-
-function logout(){
-    firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
+logout_button.addEventListener('click', e => {
+	firebase.auth().signOut();
 });
-}
+
+var user = firebase.auth().currentUser;
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    // window.location.assign("index.html");
+  } else {
+    // No user is signed in.
+    // window.alert("logged out");
+  }
+});
 
 main();

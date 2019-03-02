@@ -12,8 +12,8 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" defer></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js" defer></script>
-        <script src="js/all.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+        <script src="js/all.js"></script>
         <script src="js/login.js" defer></script>
 
         <title>Hivemind Login</title>
@@ -23,8 +23,6 @@
             <i class="fas fa-dice-d6 fa-10x"></i>
             <h1 class="display-4">Hivemind</h1>
             <p class="lead">The ultra-lightweight information sharing application for all your academic needs.</p>
-
-            <form method="POST" action="index.html">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
                     <input type="email" id="email_field" name="username" placeholder="Email" required autofocus>
@@ -33,9 +31,8 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" id="password_field" name="password" placeholder="Password" required>
                 </div>
-                <button onclick="login()" type="submit" class="btn btn-primary">Submit</button>
-                <button onclick="register()" type="submit" class="btn btn-primary">Register</button>
-            </form>
+                <button class="btn btn-primary" id="login_button">Submit</button>
+                <button class="btn btn-primary" id="register_button">Register</button>
         </div>
 
         <footer class="footer">
