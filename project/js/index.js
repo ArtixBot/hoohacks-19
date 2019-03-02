@@ -10,13 +10,10 @@ function getTimeDate(){
 	date.innerHTML = datetime.toLocaleDateString();
 }
 
-function requestJSON(url){
-	return fetch(url).then(response => response.json());	// Combined arrow and anonymous function with then().
-}
 
 function submitMsg(){
 	let entry = document.getElementById("submitMessage");
-	if (entry.value == ""){
+	if (entry.value.trim() == ""){
 		return false;
 	}
 	else{		// Submit to Firebase.
@@ -25,10 +22,42 @@ function submitMsg(){
 	entry.value = "";
 }
 
+function analyzeSentiment(data){
+	let url = "https://eastus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment";
+	let ocp_key = "b9de284b8ce1456fa4c178d4482ceb27";
+	return fetch(url, {
+		method: "POST",
+		credentials: "same-origin",
+		headers:{
+			"Content-Type" : "application/json",
+			"Ocp-Apim-Subscription-Key" : ocp_key,
+		},
+		body: JSON.stringify({
+			"documents" : [
+				{
+					"language": "en",
+					"id" : 1,
+					"text" : data,
+				}
+			]
+		})
+	}).then(response => response.json()).then(
+		response => {return response["documents"][0]["score"];}
+	)
+} 
+
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
-	let module = document.createElement("div");
-	workspace.innerHTML = "<b>Selected Content</b><hr>" + content;
+	let sentiment = analyzeSentiment(content).then((result) =>{
+		let status = "neutral"
+		if (result < 0.40){
+			status = "negative"
+		}
+		else if (result > 0.60){
+			status = "positive"
+		}
+		workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
+	});
 }
 
 function renderMessage(message){
