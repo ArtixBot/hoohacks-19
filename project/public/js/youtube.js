@@ -14,5 +14,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function render(id){
+	let x = document.getElementById("ytplayer-holder");
+	x.style.opacity = 1;
 	player.loadVideoById(id);
 }
