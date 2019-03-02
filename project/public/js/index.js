@@ -102,13 +102,14 @@ logout_button.addEventListener('click', e => {
 
 var user = firebase.auth().currentUser;
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser) {
     // User is signed in.
-    // window.location.assign("index.html");
+    console.log('Logged in');
   } else {
     // No user is signed in.
-    // window.alert("logged out");
+    console.log('Not logged in');
+	window.location.href = "login.html";
   }
 });
 
