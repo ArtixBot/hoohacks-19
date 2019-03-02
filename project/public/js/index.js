@@ -46,18 +46,31 @@ function analyzeSentiment(data){
 	)
 } 
 
+function youtube_parser(url){
+	var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+	var match = url.match(regExp);
+	return (match&&match[1].length==11)? match[1] : false;
+}
+
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
-	let sentiment = analyzeSentiment(content).then((result) =>{
-		let status = "neutral"
-		if (result < 0.40){
-			status = "negative"
-		}
-		else if (result > 0.60){
-			status = "positive"
-		}
-		workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
-	});
+	let youRegex = new RegExp("^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+");
+	if (youRegex.test(content)){
+		let id = youtube_parser(content);
+		render(id);
+	}
+	else{
+		analyzeSentiment(content).then((result) =>{
+			let status = "neutral"
+			if (result < 0.40){
+				status = "negative"
+			}
+			else if (result > 0.60){
+				status = "positive"
+			}
+			workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
+		});
+	}
 }
 
 function renderMessage(message){

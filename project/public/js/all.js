@@ -5,11 +5,11 @@
         var light = document.cookie.split(";")[0];
 
         if (light){		// Check if cookie exists in the first place.
-                let status = light.split("=")[1];
+            let status = light.split("=")[1];
             console.log(document.styleSheets[3].cssRules[3].style["color"]);
             if (status=="dark"){
                 document.styleSheets[3].cssRules[2].style["background-image"] = 'url("images/Dark-Theme.svg")'	// Don't ask how I got this...
-                    document.styleSheets[3].cssRules[3].style["color"] = "white";
+                document.styleSheets[3].cssRules[3].style["color"] = "white";
                 document.styleSheets[2].cssRules[581].style["color"] = "white";
                 document.styleSheets[2].cssRules[579].style["color"] = "white";
             }
