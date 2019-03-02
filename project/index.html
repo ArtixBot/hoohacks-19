@@ -65,13 +65,13 @@
                             <i class="fas fa-cog float-right"></i>
                         </div>
                         <hr>
-                        <div id="chatpanel" class="jumbotron jumbotron-fluid">
-
+                        <div id="chatPanel">
+                            <b id="chatMessages"></b>
                         </div>
-                        <div id="submitpanel">
-                            <form class="form-horizontal">
+                        <div id="submitPanel">
+                            <form class="form-horizontal" onsubmit="return submitMsg(); return false;">
                                 <div class="input-group">
-                                    <input id="chatMessage" type="text" class="form-control col-lg-24" placeholder="Enter your message..." autocomplete="off" onkeydown="submitMsg(event.which, event.keycode);">
+                                    <input id="chatMessage" type="text" class="form-control col-lg-24" placeholder="Enter your message..." autocomplete="off">
                                 </div>
                             </form>
                         </div>
@@ -79,12 +79,11 @@
 
                     <div class="col-md-4">
                         <div>
-                            <i class="fas fa-2x fa-newspaper"></i><b class="widget-header">News</b>
+                            <i class="fas fa-2x fa-briefcase"></i><b class="widget-header">Workspace</b>
                             <i class="fas fa-cog float-right"></i>
                         </div>
                         <hr>
-                        <p>The latest news. Powered by NewsAPI. Refreshes automatically every 10 minutes.</p>
-                        <div id="newsResult"></div>	<!-- Automatically filled by getHeadlines() in index.js.-->
+                        <p>Links or files you access in the Hivemind panel will be previewable here.</p>
                     </div>
 
                 </div>

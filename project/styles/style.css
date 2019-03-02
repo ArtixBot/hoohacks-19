@@ -134,12 +134,7 @@ div.row {
 	padding-top: 35px;
 }
 
-#chatpane{
-	background-color: white;
-	background-clip: border-box;
-}
-
-#submitpanel{
-	position: absolute;
-	bottom: 0;
+#chatPanel{
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 100%;
 }
