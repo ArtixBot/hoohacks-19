@@ -135,10 +135,27 @@ div.row {
 }
 
 #chatPanel{
+	display: block;
 	background-color: rgba(255, 255, 255, 0.5);
-	height: 100%;
+	max-height: 300px;
+	height: 300px;
+	overflow-y: scroll;
 }
 
 #submitPanel{
 	margin-top: 5px;
+}
+
+.chatMessage{
+	background-color: rgba(75, 198, 255, 0.5);
+	border: solid 1px;
+	-webkit-transition: background-color 0.20s;
+	-moz-transition:    background-color 0.20s;
+	-ms-transition:     background-color 0.20s;
+	-o-transition:      background-color 0.20s;
+	transition:         background-color 0.20s;
+}
+
+.chatMessage:hover{
+	background-color: rgba(75, 198, 255, 1);
 }
