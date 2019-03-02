@@ -86,11 +86,9 @@ function main(){
 
 function logout(){
     firebase.auth().signOut().then(function() {
-        window.alert("Good job");
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
-  window.alert("Signing out error!");
 });
 }
 
