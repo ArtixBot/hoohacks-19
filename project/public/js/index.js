@@ -204,6 +204,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 		if (firebaseUser) {
 		// User is signed in.
 		console.log('Logged in');
+        document.getElementById("userID").innerHTML=firebase.auth().currentUser["email"].replace(/@.*/, "");
 		} else {
 		// No user is signed in.
 		console.log('Not logged in');
