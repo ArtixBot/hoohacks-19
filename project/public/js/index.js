@@ -76,6 +76,11 @@ function displayInWorkspace(content){
 			}
 			workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
 		});
+		wiki(content).then((result) =>{
+			if (result){
+				workspace.innerHTML = workspace.innerHTML + "<hr><b>Wikipedia Abstract</b><hr>" + result;
+			}
+		})
 	}
 }
 
