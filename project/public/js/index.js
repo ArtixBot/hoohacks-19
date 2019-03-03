@@ -17,32 +17,37 @@ function submitMsg(){
 		return false;
 	}
 	else{		// Submit to Firebase.
+		firebase.database().ref('user_messages/usr_msgs').set({
+			email: firebase.auth().currentUser["email"],
+			message: document.getElementById("submitMessage").value
+		}
+	);
 		renderMessage(entry.value);
 	}
 	entry.value = "";
 }
 
 function analyzeSentiment(data){
-	let url = "https://eastus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment";
-	let ocp_key = "b9de284b8ce1456fa4c178d4482ceb27";
-	return fetch(url, {
-		method: "POST",
-		credentials: "same-origin",
-		headers:{
-			"Content-Type" : "application/json",
-			"Ocp-Apim-Subscription-Key" : ocp_key,
-		},
-		body: JSON.stringify({
-			"documents" : [
-				{
-					"language": "en",
-					"id" : 1,
-					"text" : data,
-				}
-			]
-		})
-	}).then(response => response.json()).then(
-		response => {return response["documents"][0]["score"];}
+let url = "https://eastus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment";
+let ocp_key = "b9de284b8ce1456fa4c178d4482ceb27";
+return fetch(url, {
+method: "POST",
+credentials: "same-origin",
+headers:{
+"Content-Type" : "application/json",
+"Ocp-Apim-Subscription-Key" : ocp_key,
+},
+body: JSON.stringify({
+		  "documents" : [
+		  {
+		  "language": "en",
+		  "id" : 1,
+		  "text" : data,
+		  }
+		  ]
+		  })
+}).then(response => response.json()).then(
+	response => {return response["documents"][0]["score"];}
 	)
 } 
 
@@ -54,7 +59,7 @@ function youtube_parser(url){
 
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
-	
+
 	// Reset current workspace.
 	workspace.innerHTML = "";
 	unrenderYT();
@@ -67,20 +72,20 @@ function displayInWorkspace(content){
 	}
 	else{
 		analyzeSentiment(content).then((result) =>{
-			let status = "neutral"
-			if (result < 0.40){
+				let status = "neutral"
+				if (result < 0.40){
 				status = "negative"
-			}
-			else if (result > 0.60){
+				}
+				else if (result > 0.60){
 				status = "positive"
-			}
-			workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
-		});
+				}
+				workspace.innerHTML = "<b>Selected Content</b><hr>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
+				});
 		wiki(content).then((result) =>{
-			if (result){
+				if (result){
 				workspace.innerHTML = workspace.innerHTML + "<hr><b>Wikipedia Abstract</b><hr>" + result;
-			}
-		})
+				}
+				})
 	}
 }
 
@@ -100,7 +105,7 @@ function renderMessage(message){
 // When a message is rendered into the chat pane and we click on it, run displayInWorkspace();
 // Call this method every second, or when submitMsg() runs.
 function retrieveMessages(){
-	
+
 }
 
 function main(){
@@ -110,20 +115,20 @@ function main(){
 }
 
 logout_button.addEventListener('click', e => {
-	firebase.auth().signOut();
-});
+		firebase.auth().signOut();
+		});
 
 var user = firebase.auth().currentUser;
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
-  if (firebaseUser) {
-    // User is signed in.
-    console.log('Logged in');
-  } else {
-    // No user is signed in.
-    console.log('Not logged in');
-	window.location.href = "login.html";
-  }
-});
+		if (firebaseUser) {
+		// User is signed in.
+		console.log('Logged in');
+		} else {
+		// No user is signed in.
+		console.log('Not logged in');
+		window.location.href = "login.html";
+		}
+		});
 
 main();
