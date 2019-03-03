@@ -65,6 +65,40 @@ function isImage(url) {
     return(url.match(/\.(jpeg|jpg|gif|png|gif)$/) != null);
 }
 
+function imageAnalysis(url){
+	let workspace = document.getElementById("workspace-content");
+
+	let ocp_key = "f7b8d2d1056540f585beb1568c7fedf1";
+	let fetchUrl = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Description&language=en";
+
+	
+	return fetch(fetchUrl, {
+		method: "POST",
+		credentials: "same-origin",
+		headers: {
+			"Content-Type" : "application/json",
+			"Ocp-Apim-Subscription-Key" : ocp_key,
+		},
+		body: '{"url": "' + url + '"}',
+	}).then(response =>response.json()).then(result =>{
+		let categories = result["categories"][0]["name"];
+		let category_confidence = result["categories"][0]["score"];
+		let desc = result["description"];
+		workspace.innerHTML = workspace.innerHTML + "<hr><b>Primary Category: </b>" + categories + " (confidence " + category_confidence.toFixed(2)*100 + "%)";
+		if (desc["captions"].length > 0){
+			let caption = desc["captions"][0]["text"]
+			let cap_conf = desc["captions"][0]["confidence"]
+			workspace.innerHTML = workspace.innerHTML + "<hr><b>Description: </b>" + caption + " (confidence " + cap_conf.toFixed(2)*100 + "%)";
+		}
+		if (desc["tags"].length > 0){
+			workspace.innerHTML = workspace.innerHTML + "<hr><b>Applicable Tags: </b>"
+			for(let i = 0; i < desc["tags"].length; i++){
+				workspace.innerHTML = workspace.innerHTML + desc["tags"][i] + " ";
+			}
+		}
+	})
+}
+
 function youtube_parser(url){
 	var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
 	var match = url.match(regExp);
@@ -73,11 +107,11 @@ function youtube_parser(url){
 
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
-
+	
 	// Reset current workspace.
 	workspace.innerHTML = "";
 	unrenderYT();
-
+	
 	// Check if youtube video.
 	let youRegex = new RegExp("^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+");
 	if (youRegex.test(content)){
@@ -87,6 +121,7 @@ function displayInWorkspace(content){
 	else if (validURL(content)){
 		if (isImage(content)){
 			workspace.innerHTML = "<img src='" + content + "' style='width: 100%' alt='Was unable to retrieve image.'/>"
+			imageAnalysis(content);
 		}else{
 			workspace.innerHTML = "<b>URL detected: </b><a href=" + content + '>' + content + "</a>";
 		}
