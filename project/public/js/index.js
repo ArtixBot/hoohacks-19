@@ -103,6 +103,7 @@ function main(){
 	setInterval(getTimeDate, 1000);			// Every second update time.
 	setInterval(retrieveMessages, 1000);
 }
+
 logout_button.addEventListener('click', e => {
 	firebase.auth().signOut();
 });

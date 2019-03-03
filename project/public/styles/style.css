@@ -149,6 +149,7 @@ div.row {
 .chatMessage{
 	background-color: rgba(75, 198, 255, 0.5);
 	border: solid 0.5px;
+	border-radius: 2px;
 	-webkit-transition: background-color 0.20s;
 	-moz-transition:    background-color 0.20s;
 	-ms-transition:     background-color 0.20s;
