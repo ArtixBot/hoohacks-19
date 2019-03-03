@@ -21,4 +21,19 @@ function checkStatus(){
 	}
 }
 
+var user = firebase.auth().currentUser;
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser) {
+    // User is signed in.
+    console.log('Logged in');
+  } else {
+    // No user is signed in.
+    console.log('Not logged in');
+	window.location.href = "login.html";
+  }
+});
+
+
+
 checkStatus();
