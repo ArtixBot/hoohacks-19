@@ -177,3 +177,8 @@ div.row {
 #workspace-content{
 	font-size: 14px;
 }
+
+#logout_button{
+    background-image: none;
+    border: none;
+}
