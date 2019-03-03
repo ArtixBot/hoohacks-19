@@ -182,7 +182,7 @@ function retrieveMessages(){
 			if (current != email){
 				if (message != tmp){
 					tmp = message;
-					renderMessage(message);
+					renderMessage(message, email);
 				}
 			}
 		});
