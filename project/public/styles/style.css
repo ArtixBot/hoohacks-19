@@ -16,7 +16,7 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
-	overflow: hidden;
+	overflow: auto;
 }
 
 @media screen and (max-width: 1200px){
@@ -176,4 +176,9 @@ div.row {
 
 #workspace-content{
 	font-size: 14px;
+}
+
+#logout_button{
+    background-image: none;
+    border: none;
 }
