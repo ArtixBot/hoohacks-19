@@ -18,3 +18,9 @@ function render(id){
 	x.style.opacity = 1;
 	player.loadVideoById(id);
 }
+
+function unrenderYT(){
+	let x = document.getElementById("ytplayer-holder");
+	x.style.opacity = 0;
+	player.loadVideoById(0);
+}

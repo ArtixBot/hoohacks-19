@@ -54,6 +54,12 @@ function youtube_parser(url){
 
 function displayInWorkspace(content){
 	let workspace = document.getElementById("workspace-content");
+	
+	// Reset current workspace.
+	workspace.innerHTML = "";
+	unrenderYT();
+
+	// Check if youtube video.
 	let youRegex = new RegExp("^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+");
 	if (youRegex.test(content)){
 		let id = youtube_parser(content);
@@ -89,6 +95,7 @@ function renderMessage(message){
 // When a message is rendered into the chat pane and we click on it, run displayInWorkspace();
 // Call this method every second, or when submitMsg() runs.
 function retrieveMessages(){
+	
 }
 
 function main(){
