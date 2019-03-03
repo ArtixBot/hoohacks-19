@@ -59,7 +59,11 @@ function validURL(str) {
 	  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
 	  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 	return !!pattern.test(str);
-  }
+}
+
+function isImage(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png|gif)$/) != null);
+}
 
 function youtube_parser(url){
 	var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
@@ -81,7 +85,11 @@ function displayInWorkspace(content){
 		render(id);
 	}
 	else if (validURL(content)){
-		workspace.innerHTML = "<b>URL detected: </b><a href=" + content + '>' + content + "</a>";
+		if (isImage(content)){
+			workspace.innerHTML = "<img src='" + content + "' style='width: 100%' alt='Was unable to retrieve image.'/>"
+		}else{
+			workspace.innerHTML = "<b>URL detected: </b><a href=" + content + '>' + content + "</a>";
+		}
 	}
 	else{
 		analyzeSentiment(content).then((result) =>{
