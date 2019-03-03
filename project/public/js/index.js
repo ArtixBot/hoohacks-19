@@ -22,7 +22,8 @@ function submitMsg(){
 			message: document.getElementById("submitMessage").value
 		}
 	);
-		renderMessage(entry.value);
+		//added email as parameter
+		renderMessage(entry.value, firebase.auth().currentUser["email"]);
 	}
 	entry.value = "";
 }
@@ -89,11 +90,16 @@ function displayInWorkspace(content){
 	}
 }
 
-function renderMessage(message){
+//added email as parameter
+function renderMessage(message, email){
 	let chatPanel = document.getElementById("chatPanel");
 	let module = document.createElement("div");
+	//regex remove email for username
+	var address = email;
+	var username = address.replace(/@.*/, "");
+
 	module.setAttribute("class", "chatMessage");
-	module.innerHTML = message;
+	module.innerHTML = username + ": " + message;
 
 	module.addEventListener("click", function(){displayInWorkspace(module.innerHTML)});
 
