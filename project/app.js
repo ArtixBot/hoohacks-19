@@ -13,10 +13,10 @@ app.get('/', function(req,res){
 });
 
 
-app.get('/account.html', function(req,res){
-    //res.status(200).send('Hello from the yeet boi bitch');
-    res.sendFile(path.join(__dirname, '/account.html'));
-});
+// app.get('/account.html', function(req,res){
+//     //res.status(200).send('Hello from the yeet boi bitch');
+//     res.sendFile(path.join(__dirname, '/account.html'));
+// });
 
 app.use(express.static(path.join(__dirname, 'styles')));
 
