@@ -67,12 +67,14 @@ function displayInWorkspace(content){
 
 	// Check if youtube video.
 	let youRegex = new RegExp("^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+");
-	if (youRegex.test(content)){
-		let id = youtube_parser(content);
+	// modify content to keep content parsable
+	let no_username = content.replace(/.*: /, "");
+	if (youRegex.test(no_username)){
+		let id = youtube_parser(no_username);
 		render(id);
 	}
 	else{
-		analyzeSentiment(content).then((result) =>{
+		analyzeSentiment(no_username).then((result) =>{
 				let status = "neutral"
 				if (result < 0.40){
 				status = "negative"
@@ -80,9 +82,9 @@ function displayInWorkspace(content){
 				else if (result > 0.60){
 				status = "positive"
 				}
-				workspace.innerHTML = "<b>Selected Content: </b>" + content + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
+				workspace.innerHTML = "<b>Selected Content: </b>" + no_username + "<hr><b>Analyzed Sentiment: </b>" + result.toFixed(2) +" <b>(" + status + ")</b>";
 				});
-		wiki(content).then((result) =>{
+		wiki(no_username).then((result) =>{
 				if (result){
 				workspace.innerHTML = workspace.innerHTML + "<hr><b>Wikipedia Abstract</b><hr>" + result;
 				}
