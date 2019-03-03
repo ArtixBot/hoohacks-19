@@ -44,19 +44,5 @@
             <h2>What's it powered with?</h2>
             <p>As of now, the holy trinity of HTML/CSS/JavaScript, as well as: NewsAPI, SVGBackgrounds.com.</p>
         </div>
-        <script>
-            var user = firebase.auth().currentUser;
-
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-        // User is signed in.
-            console.log('Logged in');
-    } else {
-        // No user is signed in.
-            console.log('Not logged in');
-        window.location.href = "login.html";
-    }
-});
-        </script>
     </body>
 </html>
