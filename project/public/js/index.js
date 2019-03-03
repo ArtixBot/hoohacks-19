@@ -121,12 +121,12 @@ function displayInWorkspace(content){
 		let id = youtube_parser(no_username);
 		render(id);
 	}
-	else if (validURL(content)){
-		if (isImage(content)){
-			workspace.innerHTML = "<img src='" + content + "' style='width: 100%' alt='Was unable to retrieve image.'/>"
-			imageAnalysis(content);
+	else if (validURL(no_username)){
+		if (isImage(no_username)){
+			workspace.innerHTML = "<img src='" + no_username + "' style='width: 100%' alt='Was unable to retrieve image.'/>"
+			imageAnalysis(no_username);
 		}else{
-			workspace.innerHTML = "<b>URL detected: </b><a href=" + content + '>' + content + "</a>";
+			workspace.innerHTML = "<b>URL detected: </b><a href=" + no_username + '>' + no_username + "</a>";
 		}
 	}
 	else{
