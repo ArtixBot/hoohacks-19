@@ -137,8 +137,9 @@ div.row {
 #chatPanel{
 	display: block;
 	background-color: rgba(255, 255, 255, 0.5);
-	max-height: 300px;
-	height: 300px;
+	max-height: 350px;
+	height: 350px;
+	border-radius: 2px;
 	overflow-y: scroll;
 }
 
@@ -148,8 +149,9 @@ div.row {
 
 .chatMessage{
 	background-color: rgba(75, 198, 255, 0.5);
-	border: solid 0.5px;
+	border: solid rgb(97, 97, 97) 0.5px;
 	border-radius: 2px;
+	padding-left: 1%;
 	-webkit-transition: background-color 0.20s;
 	-moz-transition:    background-color 0.20s;
 	-ms-transition:     background-color 0.20s;
