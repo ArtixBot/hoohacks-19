@@ -7,7 +7,7 @@ login_button.addEventListener('click', e => {
 	const auth = firebase.auth();
 	// Sign in
 	const promise = auth.signInWithEmailAndPassword(email, pass);
-	promise.catch(e => console.log(e.message));
+	promise.catch(e => window.alert('Wrong username/password'));
 });
 
 register_button.addEventListener('click', e => {
@@ -16,7 +16,7 @@ register_button.addEventListener('click', e => {
 	const auth = firebase.auth();
 	//
 	const promise = auth.createUserWithEmailAndPassword(email, pass);
-	promise.catch(e => console.log(e.message));
+	promise.catch(e => window.alert('Error registering account'));
 });
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
