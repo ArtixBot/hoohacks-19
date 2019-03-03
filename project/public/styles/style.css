@@ -15,7 +15,14 @@
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 1200px){
+	body{
+		overflow: auto;
+	}
 }
 
 .fas {
@@ -165,4 +172,8 @@ div.row {
 
 #ytplayer-holder{
 	opacity: 0;
+}
+
+#workspace-content{
+	font-size: 14px;
 }
