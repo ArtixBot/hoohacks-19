@@ -100,12 +100,28 @@ function renderMessage(message){
 	chatPanel.appendChild(module);
 	chatPanel.scrollTop = chatPanel.scrollHeight;
 }
-
+var tmp = null;
 // TODO: Implement. Pull NEW messages from Firebase, then render using renderMessage();
 // When a message is rendered into the chat pane and we click on it, run displayInWorkspace();
 // Call this method every second, or when submitMsg() runs.
 function retrieveMessages(){
+	var db = firebase.database(); // Get a database reference to our posts
+	var ref = db.ref("user_messages/usr_msgs/");
+	var current = firebase.auth().currentUser["email"];
+	//var ref2 = db.ref("user_messages/usr_msgs/email");
 
+	// Attach an asynchronous callback to read the data at our reference
+	ref.once("value")
+		.then(function(snapshot) {
+			var email = snapshot.child("email").val();
+			var message = snapshot.child("message").val();
+			if (current != email){
+				if (message != tmp){
+					tmp = message;
+					renderMessage(message);
+				}
+			}
+		});
 }
 
 function main(){
