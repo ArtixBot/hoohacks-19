@@ -51,6 +51,16 @@ body: JSON.stringify({
 	)
 } 
 
+function validURL(str) {
+	var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+	  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+	  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+	  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+	  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+	  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+	return !!pattern.test(str);
+  }
+
 function youtube_parser(url){
 	var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
 	var match = url.match(regExp);
@@ -69,6 +79,9 @@ function displayInWorkspace(content){
 	if (youRegex.test(content)){
 		let id = youtube_parser(content);
 		render(id);
+	}
+	else if (validURL(content)){
+		workspace.innerHTML = "<b>URL detected: </b><a href=" + content + '>' + content + "</a>";
 	}
 	else{
 		analyzeSentiment(content).then((result) =>{
